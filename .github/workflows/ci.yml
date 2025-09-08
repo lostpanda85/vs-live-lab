@@ -40,7 +40,8 @@ jobs:
       with:
         name: published-app
         path: ./publish
-        - name: Run security scan
+    
+    - name: Run security scan
       if: github.event_name == 'pull_request'
       run: echo "Security scanning would run here"
       
