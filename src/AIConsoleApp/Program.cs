@@ -59,6 +59,19 @@ while (true)
     {
         Console.WriteLine($"Error: {ex.Message}");
     }
+
+    static void DisplayWelcomeMessage()
+    {
+       Console.WriteLine("VSLIVE! 2025 - AI Chat Console (Secure Version)");
+       Console.WriteLine("===============================================");
+       Console.WriteLine("Features:");
+       Console.WriteLine("- Secure token management with .NET Secret Manager");
+       Console.WriteLine("- Integration with GitHub Models API");
+       Console.WriteLine("- Interactive chat interface");
+       Console.WriteLine();
+       Console.WriteLine("Ask me anything about C# and .NET! (type 'exit' to quit)");
+    }
 }
 
+DisplayWelcomeMessage();
 Console.WriteLine("\nThanks for using the AI Chat Console!");
