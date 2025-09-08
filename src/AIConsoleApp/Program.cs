@@ -9,7 +9,12 @@ using System.ClientModel;
 
 // To authenticate with the model you will need to generate a personal access token (PAT) in your GitHub settings. 
 // Create your PAT token by following instructions here: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
-var credential = "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"; // We'll replace this with YOUR actual PAT
+var configuration = new ConfigurationBuilder()
+    .AddUserSecrets<Program>()
+    .Build();
+
+var credential = configuration["GitHubToken"] 
+    ?? throw new InvalidOperationException("GitHub token not configured. Use 'dotnet user-secrets set GitHubToken YOUR_TOKEN'");
 
 var openAIOptions = new OpenAIClientOptions()
 {
