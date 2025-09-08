@@ -6,6 +6,7 @@ Run this model in C#.
 using OpenAI;
 using OpenAI.Chat;
 using System.ClientModel;
+using Microsoft.Extensions.Configuration;
 
 // To authenticate with the model you will need to generate a personal access token (PAT) in your GitHub settings. 
 // Create your PAT token by following instructions here: https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
