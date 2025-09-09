@@ -65,10 +65,10 @@ jobs:
       run: dotnet workload install aspire
   
     - name: Restore AI App
-      run: dotnet restore src/AIChat/**/*.csproj
+      run: dotnet restore src/AIChat/LocalAIChat/LocalAIChat.AppHost/LocalAIChat.AppHost.csproj
   
     - name: Build AI App
-      run: dotnet build src/AIChat/**/*.csproj --no-restore --configuration Release
+      run: dotnet build src/AIChat/LocalAIChat/LocalAIChat.AppHost/LocalAIChat.AppHost.csproj --no-restore --configuration Release
   
     - name: Publish AI App
-      run: dotnet publish src/AIChat/**/*.csproj --no-build --configuration Release
+      run: dotnet publish src/AIChat/LocalAIChat/LocalAIChat.AppHost/LocalAIChat.AppHost.csproj --no-build --configuration Release
