@@ -7,12 +7,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 
-builder.AddOllamaApiClient("chat")
+builder.AddOllamaApiClient("chat", settings =>
+{
+    settings.Endpoint = new Uri(builder.Configuration["Ollama:Endpoint"]!);
+    settings.SelectedModel = builder.Configuration["Ollama:ChatModel"]!;
+})
     .AddChatClient()
     .UseFunctionInvocation()
     .UseOpenTelemetry(configure: c =>
         c.EnableSensitiveData = builder.Environment.IsDevelopment());
-builder.AddOllamaApiClient("embeddings")
+builder.AddOllamaApiClient("embedding", settings =>
+        {
+            settings.Endpoint = new Uri(builder.Configuration["Ollama:Endpoint"]!);
+            settings.SelectedModel = builder.Configuration["Ollama:EmbeddingsModel"]!;
+        })
     .AddEmbeddingGenerator();
 
 builder.AddQdrantClient("vectordb");
